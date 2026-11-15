@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Released baseline from Maven Central; scripts/run-benchmarks.sh switches it to the local build. -->
+        <!-- For building by hand; scripts/run-benchmarks.sh selects the locally built version of each target. -->
         <brotli4j.version>1.24.0</brotli4j.version>
         <jmh.version>1.37</jmh.version>
     </properties>

@@ -3,15 +3,16 @@
 JMH benchmarks comparing the JNI and FFM bindings of [Brotli4j](https://github.com/hyperxpro/Brotli4j).
 Currently supported: **Linux only**, with Bash 4.4+, Maven, a JDK 22+ with an FFM linker, and standard Linux tools (`unzip`, `sha256sum`, `flock`, `timeout`, `lscpu`). Profiling additionally requires a compatible async-profiler installation.
 
-Each benchmark runs against three targets on the same JDK:
+Each benchmark runs against three targets on the same JDK. All of them are built locally from a
+pinned commit with the same JDK and C toolchain, so differences come from the code, not from the build:
 
 | Target | brotli4j | Backend |
 |---|---|---|
-| `release` | `1.24.0` from Maven Central | JNI (the released classes) |
-| `jni` | local build, `1.24.0-LOCAL` | JNI, through the JDK 22+ classes (`-Dbrotli4j.backend=jni`) |
-| `ffm` | the same local build | FFM (`-Dbrotli4j.backend=ffm`) |
+| `main` | `1.24.0-MAIN`: `main` before the FFM port | JNI (the classes every user runs today) |
+| `jni` | `1.24.0-LOCAL`: the FFM branch | JNI, through the JDK 22+ classes (`-Dbrotli4j.backend=jni`) |
+| `ffm` | the same build as `jni` | FFM (`-Dbrotli4j.backend=ffm`) |
 
-`release` vs `jni` shows what the JDK 22+ classes cost on their own; `jni` vs `ffm` compares the two
+`main` vs `jni` shows what the JDK 22+ classes cost on their own; `jni` vs `ffm` compares the two
 bindings in the same build.
 
 ## Benchmarks
@@ -38,13 +39,17 @@ for dynamic HTTP content). Dictionaries use quality 5, the lowest at which brotl
 
 ## Quick start
 
-Build the local brotli4j on JDK 22+ and install it as `1.24.0-LOCAL`:
+Build both versions from a Brotli4j clone and install them. Each commit is built in a temporary git
+worktree, so the clone's checkout is left alone. Needs `cmake` and a C/C++ compiler on `PATH`:
 
 ```bash
-# Replace the checkout path and native module with your Linux platform.
-(cd /path/to/Brotli4j && mvn -pl brotli4j,service,natives/linux-x86_64 -am -DskipTests package)
-scripts/install-local-brotli4j.sh /path/to/Brotli4j
+# main before the FFM port (0a0ac32, head of main when these benchmarks were written)
+scripts/build-brotli4j.sh --jni-only /path/to/Brotli4j 0a0ac32 1.24.0-MAIN
+# the FFM branch
+scripts/build-brotli4j.sh /path/to/Brotli4j add-support-for-ffm-api 1.24.0-LOCAL
 ```
+
+`scripts/install-local-brotli4j.sh` installs an already built checkout instead.
 
 Run one benchmark against all targets (GC results, native-memory summaries, CPU flamegraphs):
 
@@ -102,7 +107,7 @@ Supported artifact names: `linux-x86_64`, `linux-aarch64`, `linux-armv7`, `linux
 | `ASYNC_PROFILER_HOME` | Set to your async-profiler distribution directory for profiling |
 | `ASYNC_PROFILER_LIB` | Overrides the profiler library path |
 | `NATIVE_PLATFORM` | Detected from the selected JVM architecture |
-| `RELEASE_VERSION` / `LOCAL_VERSION` | `1.24.0` / `1.24.0-LOCAL` |
+| `MAIN_VERSION` / `LOCAL_VERSION` | `1.24.0-MAIN` / `1.24.0-LOCAL` |
 | `RESULT_ROOT` | Repository `docs` directory |
 | `RUN_ID` | Unique UTC timestamp/process/random identifier; existing run directories are rejected |
 | `INHIBIT_SLEEP` | `auto`: use GNOME inhibition when usable; `required`: fail if unavailable; `off`: disable |

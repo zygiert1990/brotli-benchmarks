@@ -8,11 +8,11 @@ Usage:
   scripts/run-benchmarks.sh [--mode MODE] BENCHMARK [TARGET...]
 
 Runs one benchmark class against these targets (all of them by default):
-  release  brotli4j $RELEASE_VERSION (default 1.24.0) from Maven Central: JNI only
-  jni      local build $LOCAL_VERSION (default 1.24.0-LOCAL) with -Dbrotli4j.backend=jni
-  ffm      local build $LOCAL_VERSION with -Dbrotli4j.backend=ffm
+  main     $MAIN_VERSION (default 1.24.0-MAIN): brotli4j main before the FFM port, JNI only
+  jni      $LOCAL_VERSION (default 1.24.0-LOCAL): the FFM branch with -Dbrotli4j.backend=jni
+  ffm      $LOCAL_VERSION with -Dbrotli4j.backend=ffm
 
-Install the local build first with scripts/install-local-brotli4j.sh.
+Build and install both versions first with scripts/build-brotli4j.sh (see readme.md).
 
 Example:
   scripts/run-benchmarks.sh EncoderLifecycleBenchmark
@@ -86,27 +86,27 @@ if [[ ! $RUN_ID =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
 fi
 readonly RESULT_DIR="$RESULT_ROOT/$BENCHMARK/$RUN_ID"
 readonly ASYNC_PROFILER_LIB=${ASYNC_PROFILER_LIB:-${ASYNC_PROFILER_HOME:+$ASYNC_PROFILER_HOME/lib/libasyncProfiler.so}}
-readonly RELEASE_VERSION=${RELEASE_VERSION:-1.24.0}
+readonly MAIN_VERSION=${MAIN_VERSION:-1.24.0-MAIN}
 readonly LOCAL_VERSION=${LOCAL_VERSION:-1.24.0-LOCAL}
 # Appended to every JMH run, e.g. EXTRA_JMH_ARGS="-f 1 -wi 0 -i 1 -r 100ms" to check the script quickly.
 read -r -a EXTRA_JMH_ARGS <<< "${EXTRA_JMH_ARGS:-}"
 readonly -a EXTRA_JMH_ARGS
 
 # Target name -> brotli4j version and the JVM options selecting/asserting its backend.
-declare -A TARGET_VERSION=([release]=$RELEASE_VERSION [jni]=$LOCAL_VERSION [ffm]=$LOCAL_VERSION)
+declare -A TARGET_VERSION=([main]=$MAIN_VERSION [jni]=$LOCAL_VERSION [ffm]=$LOCAL_VERSION)
 declare -A TARGET_JVM_ARGS=(
-    [release]="-Dbenchmark.backend=base"
+    [main]="-Dbenchmark.backend=base"
     [jni]="-Dbrotli4j.backend=jni -Dbenchmark.backend=jni"
     [ffm]="-Dbrotli4j.backend=ffm -Dbenchmark.backend=ffm"
 )
 declare -a TARGETS=()
 if (( $# == 0 )); then
-    TARGETS=(release jni ffm)
+    TARGETS=(main jni ffm)
 else
     declare -A seen_targets=()
     for target in "$@"; do
         if [[ -z ${TARGET_VERSION[$target]+x} ]]; then
-            echo "Error: unknown target: $target (expected release, jni or ffm)" >&2
+            echo "Error: unknown target: $target (expected main, jni or ffm)" >&2
             exit 2
         fi
         if [[ -n ${seen_targets[$target]+x} ]]; then

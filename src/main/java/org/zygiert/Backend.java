@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
  * Loads brotli4j and fails the trial unless the expected backend is active, so results can't be filed under
  * the wrong name. The expected backend comes from {@code -Dbenchmark.backend}:
  * <ul>
- *     <li>{@code base}: the JNI classes of the jar root (the released 1.24.0, or a local build with
+ *     <li>{@code base}: the JNI classes of the jar root (brotli4j main before the FFM port, or a build with
  *     {@code -Djdk.util.jar.enableMultiRelease=false})</li>
  *     <li>{@code jni}: the JDK 22+ classes of a local build with {@code -Dbrotli4j.backend=jni}</li>
  *     <li>{@code ffm}: the JDK 22+ classes of a local build calling brotli through FFM</li>

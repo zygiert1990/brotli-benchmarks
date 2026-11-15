@@ -22,7 +22,7 @@ Usage:
   scripts/run-all-benchmarks.sh [OPTIONS] [BENCHMARK...]
 
 Runs scripts/run-benchmarks.sh for each selected benchmark (all of them by default), one after
-another, against all targets (release, jni, ffm).
+another, against all targets (main, jni, ffm).
 
 Options:
   -n, --dry-run     Print the invocations without running them.
