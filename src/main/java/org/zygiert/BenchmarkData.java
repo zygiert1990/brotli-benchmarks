@@ -19,8 +19,6 @@ import java.util.Random;
  */
 public final class BenchmarkData {
 
-    /** Fast quality: the per-call cost of the binding is most visible. */
-    public static final int FAST_QUALITY = 1;
     /** Typical quality for compressing dynamic HTTP content. */
     public static final int PRODUCTION_QUALITY = 4;
     /** Lowest quality at which brotli uses an attached dictionary (1-4 give the same output without it). */
