@@ -18,7 +18,8 @@ Examples:
 
 --jni-only  The commit has no FFM code (see install-local-brotli4j.sh).
 
-Needs cmake and a C/C++ compiler on PATH, as the brotli4j native build does.
+Needs cmake and a C/C++ compiler on PATH, as the brotli4j native build does; CMAKE=/path/to/cmake
+puts a cmake that isn't on PATH first.
 EOF
 }
 
@@ -47,6 +48,9 @@ COMMIT=$(git -C "$REPO" rev-parse --verify --quiet "$2^{commit}") || {
 }
 readonly COMMIT
 
+if [[ -n ${CMAKE:-} ]]; then
+    PATH="$(dirname -- "$CMAKE"):$PATH"
+fi
 for command in git mvn cmake make cc c++; do
     if ! command -v "$command" >/dev/null 2>&1; then
         echo "Error: required command is unavailable: $command" >&2

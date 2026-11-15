@@ -8,8 +8,8 @@ pinned commit with the same JDK and C toolchain, so differences come from the co
 
 | Target | brotli4j | Backend |
 |---|---|---|
-| `main` | `1.24.0-MAIN`: `main` before the FFM port | JNI (the classes every user runs today) |
-| `jni` | `1.24.0-LOCAL`: the FFM branch | JNI, through the JDK 22+ classes (`-Dbrotli4j.backend=jni`) |
+| `main` | `MAIN_REF` (default `0a0ac32`): `main` before the FFM port | JNI (the classes every user runs today) |
+| `jni` | `FFM_REF` (default `add-support-for-ffm-api`): the FFM branch | JNI, through the JDK 22+ classes (`-Dbrotli4j.backend=jni`) |
 | `ffm` | the same build as `jni` | FFM (`-Dbrotli4j.backend=ffm`) |
 
 `main` vs `jni` shows what the JDK 22+ classes cost on their own; `jni` vs `ffm` compares the two
@@ -39,22 +39,24 @@ for dynamic HTTP content). Dictionaries use quality 5, the lowest at which brotl
 
 ## Quick start
 
-Build both versions from a Brotli4j clone and install them. Each commit is built in a temporary git
-worktree, so the clone's checkout is left alone. Needs `cmake` and a C/C++ compiler on `PATH`:
+Everything, in one command (GC results, native-memory summaries, CPU flamegraphs; about 8.5 hours):
 
 ```bash
-# main before the FFM port (0a0ac32, head of main when these benchmarks were written)
-scripts/build-brotli4j.sh --jni-only /path/to/Brotli4j 0a0ac32 1.24.0-MAIN
-# the FFM branch
-scripts/build-brotli4j.sh /path/to/Brotli4j add-support-for-ffm-api 1.24.0-LOCAL
+BROTLI4J_REPO=/path/to/Brotli4j ASYNC_PROFILER_HOME=/path/to/async-profiler INHIBIT_SLEEP=required \
+  scripts/run-all-benchmarks.sh
 ```
 
-`scripts/install-local-brotli4j.sh` installs an already built checkout instead.
+The runner resolves `MAIN_REF` and `FFM_REF` in the Brotli4j clone to commits and builds each one that
+isn't installed yet, as `<version>-MAIN-<commit>` / `<version>-FFM-<commit>`: a new commit on the branch is
+built automatically, an installed one is reused. Builds use a temporary git worktree, so the clone's checkout
+(and any uncommitted change in it) is left alone. Building needs `cmake` and a C/C++ compiler on `PATH`, or
+`CMAKE=/path/to/cmake`. `scripts/build-brotli4j.sh` and `scripts/install-local-brotli4j.sh` do the same by hand.
 
-Run one benchmark against all targets (GC results, native-memory summaries, CPU flamegraphs):
+One benchmark, or selected targets:
 
 ```bash
-ASYNC_PROFILER_HOME=/path/to/async-profiler scripts/run-benchmarks.sh EncoderLifecycleBenchmark
+BROTLI4J_REPO=/path/to/Brotli4j ASYNC_PROFILER_HOME=/path/to/async-profiler \
+  scripts/run-benchmarks.sh EncoderLifecycleBenchmark
 ```
 
 Results go to `docs/<Benchmark>/<run-id>/<jdk>/<target>/`. Every invocation creates a new run,
@@ -62,29 +64,26 @@ including `--mode GC|NATIVEMEM|FLAMEGRAPH`; it never overwrites or merges earlie
 Use GC mode without installing async-profiler, including on a fresh checkout:
 
 ```bash
-scripts/run-benchmarks.sh --mode GC EncoderOneShotBenchmark jni ffm
+BROTLI4J_REPO=/path/to/Brotli4j scripts/run-benchmarks.sh --mode GC EncoderOneShotBenchmark jni ffm
 ```
 
 Each run records the actual Java version, Linux/CPU/RAM details, arguments, dataset hash, and
 per-target hashes of the benchmark JAR and Brotli dependency JARs. These generated records describe
 the machine that produced the results; they are not required machine settings.
 
-Run everything:
-
-```bash
-scripts/run-all-benchmarks.sh            # or --dry-run to list the invocations
-```
+`scripts/run-all-benchmarks.sh --dry-run` lists the invocations without building or running anything.
 
 Check the scripts quickly with short runs (the results are meaningless):
 
 ```bash
-EXTRA_JMH_ARGS="-f 1 -wi 0 -i 1 -r 200ms" scripts/run-benchmarks.sh DecoderOutputCapBenchmark
+BROTLI4J_REPO=/path/to/Brotli4j EXTRA_JMH_ARGS="-f 1 -wi 0 -i 1 -r 200ms" \
+  scripts/run-benchmarks.sh DecoderOutputCapBenchmark
 ```
 
 Run a single benchmark by hand; `benchmark.backend` must match what is active:
 
 ```bash
-mvn clean package -Dbrotli4j.version=1.24.0-LOCAL # native platform detected by Maven
+mvn clean package -Dbrotli4j.version=1.24.0-FFM-504f982a60 # an installed version; platform detected by Maven
 java -jar target/benchmarks.jar EncoderLifecycleBenchmark -prof gc \
   -jvmArgsPrepend "-Dbrotli4j.backend=ffm -Dbenchmark.backend=ffm"
 ```
@@ -107,7 +106,10 @@ Supported artifact names: `linux-x86_64`, `linux-aarch64`, `linux-armv7`, `linux
 | `ASYNC_PROFILER_HOME` | Set to your async-profiler distribution directory for profiling |
 | `ASYNC_PROFILER_LIB` | Overrides the profiler library path |
 | `NATIVE_PLATFORM` | Detected from the selected JVM architecture |
-| `MAIN_VERSION` / `LOCAL_VERSION` | `1.24.0-MAIN` / `1.24.0-LOCAL` |
+| `BROTLI4J_REPO` | Brotli4j clone the targets are built from; required unless both versions below are set |
+| `MAIN_REF` / `FFM_REF` | Commits or branches of the `main` and `jni`/`ffm` targets; `0a0ac32` / `add-support-for-ffm-api` |
+| `MAIN_VERSION` / `LOCAL_VERSION` | Use an installed version instead of building `MAIN_REF` / `FFM_REF` |
+| `CMAKE` | A `cmake` binary to use when it isn't on `PATH` |
 | `RESULT_ROOT` | Repository `docs` directory |
 | `RUN_ID` | Unique UTC timestamp/process/random identifier; existing run directories are rejected |
 | `INHIBIT_SLEEP` | `auto`: use GNOME inhibition when usable; `required`: fail if unavailable; `off`: disable |

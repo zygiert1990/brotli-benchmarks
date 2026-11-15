@@ -22,7 +22,8 @@ Usage:
   scripts/run-all-benchmarks.sh [OPTIONS] [BENCHMARK...]
 
 Runs scripts/run-benchmarks.sh for each selected benchmark (all of them by default), one after
-another, against all targets (main, jni, ffm).
+another, against all targets (main, jni, ffm). The brotli4j commits are built once, before the
+first benchmark, if not installed yet (BROTLI4J_REPO, MAIN_REF, FFM_REF; see run-benchmarks.sh).
 
 Options:
   -n, --dry-run     Print the invocations without running them.
@@ -65,6 +66,12 @@ if (( ${#SELECTED[@]} == 0 )); then
 fi
 
 readonly SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+if (( ! DRY_RUN )); then
+    # Once for all benchmarks; the exported versions make run-benchmarks.sh skip this step.
+    source "$SCRIPT_DIR/common.sh"
+    source "$SCRIPT_DIR/brotli4j-versions.sh"
+    prepare_brotli4j 1 1 || exit 1
+fi
 declare -a SUCCEEDED=()
 declare -a FAILED=()
 start=$SECONDS

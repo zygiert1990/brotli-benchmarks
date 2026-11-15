@@ -8,11 +8,12 @@ Usage:
   scripts/run-benchmarks.sh [--mode MODE] BENCHMARK [TARGET...]
 
 Runs one benchmark class against these targets (all of them by default):
-  main     $MAIN_VERSION (default 1.24.0-MAIN): brotli4j main before the FFM port, JNI only
-  jni      $LOCAL_VERSION (default 1.24.0-LOCAL): the FFM branch with -Dbrotli4j.backend=jni
-  ffm      $LOCAL_VERSION with -Dbrotli4j.backend=ffm
+  main     MAIN_REF (default 0a0ac32): brotli4j main before the FFM port, JNI only
+  jni      FFM_REF (default add-support-for-ffm-api) with -Dbrotli4j.backend=jni
+  ffm      FFM_REF with -Dbrotli4j.backend=ffm
 
-Build and install both versions first with scripts/build-brotli4j.sh (see readme.md).
+Commits are taken from the brotli4j clone in BROTLI4J_REPO and built first if not installed yet
+(see scripts/brotli4j-versions.sh). MAIN_VERSION / LOCAL_VERSION select installed versions instead.
 
 Example:
   scripts/run-benchmarks.sh EncoderLifecycleBenchmark
@@ -86,14 +87,11 @@ if [[ ! $RUN_ID =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
 fi
 readonly RESULT_DIR="$RESULT_ROOT/$BENCHMARK/$RUN_ID"
 readonly ASYNC_PROFILER_LIB=${ASYNC_PROFILER_LIB:-${ASYNC_PROFILER_HOME:+$ASYNC_PROFILER_HOME/lib/libasyncProfiler.so}}
-readonly MAIN_VERSION=${MAIN_VERSION:-1.24.0-MAIN}
-readonly LOCAL_VERSION=${LOCAL_VERSION:-1.24.0-LOCAL}
 # Appended to every JMH run, e.g. EXTRA_JMH_ARGS="-f 1 -wi 0 -i 1 -r 100ms" to check the script quickly.
 read -r -a EXTRA_JMH_ARGS <<< "${EXTRA_JMH_ARGS:-}"
 readonly -a EXTRA_JMH_ARGS
 
-# Target name -> brotli4j version and the JVM options selecting/asserting its backend.
-declare -A TARGET_VERSION=([main]=$MAIN_VERSION [jni]=$LOCAL_VERSION [ffm]=$LOCAL_VERSION)
+# Target name -> the JVM options selecting/asserting its backend.
 declare -A TARGET_JVM_ARGS=(
     [main]="-Dbenchmark.backend=base"
     [jni]="-Dbrotli4j.backend=jni -Dbenchmark.backend=jni"
@@ -105,7 +103,7 @@ if (( $# == 0 )); then
 else
     declare -A seen_targets=()
     for target in "$@"; do
-        if [[ -z ${TARGET_VERSION[$target]+x} ]]; then
+        if [[ -z ${TARGET_JVM_ARGS[$target]+x} ]]; then
             echo "Error: unknown target: $target (expected main, jni or ffm)" >&2
             exit 2
         fi
@@ -118,6 +116,17 @@ else
     done
 fi
 readonly -a TARGETS
+
+# Build the brotli4j commits the selected targets need, unless already installed.
+source "$PROJECT_DIR/scripts/brotli4j-versions.sh"
+need_main=0
+need_ffm=0
+for target in "${TARGETS[@]}"; do
+    if [[ $target == main ]]; then need_main=1; else need_ffm=1; fi
+done
+prepare_brotli4j "$need_main" "$need_ffm" || exit 1
+readonly MAIN_VERSION=${MAIN_VERSION:-} LOCAL_VERSION=${LOCAL_VERSION:-}
+declare -A TARGET_VERSION=([main]=$MAIN_VERSION [jni]=$LOCAL_VERSION [ffm]=$LOCAL_VERSION)
 
 # Profiled runs (native memory, flamegraph) cover one parameter sweep or a list of methods per benchmark.
 # PROFILE_PARAMETER=method: PROFILE_VALUES are method names. Otherwise each value of PROFILE_PARAMETER is
@@ -358,6 +367,8 @@ fi
 {
     printf 'Benchmark: %s\nMode: %s\nTargets: %s\nPlatform: %s\n' "$BENCHMARK" "$MODE" "${TARGETS[*]}" "$NATIVE_PLATFORM"
     printf 'Extra JMH arguments: %s\nInhibition: %s\n' "${EXTRA_JMH_ARGS[*]}" "${INHIBITOR[*]:-off}"
+    printf 'main: %s (commit %s)\njni/ffm: %s (commit %s)\n' "${MAIN_VERSION:-unused}" "${MAIN_COMMIT:-n/a}" \
+        "${LOCAL_VERSION:-unused}" "${FFM_COMMIT:-n/a}"
     "$DEFAULT_JAVA" -version 2>&1
     uname -srm
     LC_ALL=C lscpu
