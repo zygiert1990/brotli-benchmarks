@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.zygiert</groupId>
+    <artifactId>brotli-benchmarks</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Released baseline from Maven Central; scripts/run-benchmarks.sh switches it to the local build. -->
+        <brotli4j.version>1.24.0</brotli4j.version>
+        <jmh.version>1.37</jmh.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>brotli4j</artifactId>
+            <version>${brotli4j.version}</version>
+        </dependency>
+        <!-- Listed explicitly: the local build is installed without POM dependencies. -->
+        <dependency>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>service</artifactId>
+            <version>${brotli4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>native-${native.platform}</artifactId>
+            <version>${brotli4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>linux-amd64</id>
+            <activation><os><name>Linux</name><arch>amd64</arch></os></activation>
+            <properties><native.platform>linux-x86_64</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-x86_64</id>
+            <activation><os><name>Linux</name><arch>x86_64</arch></os></activation>
+            <properties><native.platform>linux-x86_64</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-aarch64</id>
+            <activation><os><name>Linux</name><arch>aarch64</arch></os></activation>
+            <properties><native.platform>linux-aarch64</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-arm</id>
+            <activation><os><name>Linux</name><arch>arm</arch></os></activation>
+            <properties><native.platform>linux-armv7</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-ppc64le</id>
+            <activation><os><name>Linux</name><arch>ppc64le</arch></os></activation>
+            <properties><native.platform>linux-ppc64le</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-s390x</id>
+            <activation><os><name>Linux</name><arch>s390x</arch></os></activation>
+            <properties><native.platform>linux-s390x</native.platform></properties>
+        </profile>
+        <profile>
+            <id>linux-riscv64</id>
+            <activation><os><name>Linux</name><arch>riscv64</arch></os></activation>
+            <properties><native.platform>linux-riscv64</native.platform></properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <!-- Explicit annotation processor path: needed for JMH on JDK 23+. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.openjdk.jmh</groupId>
+                            <artifactId>jmh-generator-annprocess</artifactId>
+                            <version>${jmh.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>benchmarks</finalName>
+                            <filters>
+                                <!-- brotli4j and service are modules; the shaded jar runs on the class path. -->
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>module-info.class</exclude>
+                                        <exclude>META-INF/versions/*/module-info.class</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.openjdk.jmh.Main</mainClass>
+                                    <!-- The local brotli4j is a multi-release jar: without this the JVM ignores
+                                         META-INF/versions/22 and always loads the JNI base classes. -->
+                                    <manifestEntries>
+                                        <Multi-Release>true</Multi-Release>
+                                    </manifestEntries>
+                                </transformer>
+                                <!-- Merges META-INF/services: brotli4j finds the native library through it. -->
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
