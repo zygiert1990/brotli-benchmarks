@@ -82,7 +82,9 @@ python3 scripts/compare_benchmarks.py docs/EncoderOneShotBenchmark # latest run 
 ```
 
 Each run directory gets `comparison.md` and `comparison-{performance,heap,native}.svg`. Native allocation is
-estimated from async-profiler samples, which don't see FFM's own `malloc` downcall (the report explains this).
+estimated from async-profiler samples, which don't see FFM's own `malloc` downcall. Its size is exact (cells plus
+input buffer per wrapper), so the script adds it to `ffm` from a table in `compare_benchmarks.py`
+(`ffm_input_buffer`); keep that table in sync when adding benchmarks.
 
 Check the scripts quickly with short runs (the results are meaningless):
 

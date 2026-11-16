@@ -148,6 +148,7 @@ def parse_metadata(path: Path) -> dict[str, str]:
         "cpu": find(r"^Model name:\s*(.*)$"),
         "memory": memory_gb(find(r"^MemTotal:\s*(\d+) kB$")),
         "os": find(r"^(Linux .*)$"),
+        "platform": find(r"^Platform: (.*)$"),
     }
 
 
@@ -201,6 +202,42 @@ def native_label(case: str) -> str:
     return f"{name}={value} bytes"
 
 
+# ---------------------------------------------------------------- FFM's own native allocation
+
+# async-profiler doesn't see FFM's malloc downcall (a direct call to libc, past its hook), but its size is exact:
+# per wrapper, the out-parameter cells (4 pointer-sized values) plus the input buffer, nothing per call.
+STREAM_DEFAULT_BUFFER = 16384
+# Decoder.decompress(byte[]) creates a wrapper as large as the compressed input: the profiled cases decompress
+# the dataset's text prefix compressed at BenchmarkData.PRODUCTION_QUALITY (4).
+COMPRESSED_TEXT_SIZE = {"256": 165, "16384": 3040, "131072": 21317}
+
+
+def ffm_input_buffer(benchmark: str, case: str) -> int | None:
+    """Input buffer of the one wrapper a profiled operation creates; 0 if it creates none; None if unknown."""
+    prefix, _, value = case.partition("-")
+    if benchmark in ("EncoderLifecycleBenchmark", "DecoderLifecycleBenchmark", "EncoderStreamFlushBenchmark",
+                     "DecoderOutputCapBenchmark", "DecoderDictionaryBenchmark"):
+        return STREAM_DEFAULT_BUFFER
+    if benchmark in ("EncoderOneShotBenchmark", "EncoderStreamBufferSizeBenchmark",
+                     "DecoderStreamBufferSizeBenchmark") and prefix in ("input", "buffer"):
+        return int(value)
+    if benchmark == "DecoderOneShotBenchmark" and prefix == "input":
+        return COMPRESSED_TEXT_SIZE.get(value)
+    if benchmark == "EncoderDictionaryBenchmark":
+        return {"prepareAndCloseDictionary": 0, "compressMessageWithDictionary": STREAM_DEFAULT_BUFFER}.get(value)
+    return None
+
+
+def ffm_own_malloc(benchmark: str, case: str, platform: str) -> int | None:
+    buffer = ffm_input_buffer(benchmark, case)
+    if buffer is None:
+        return None
+    if buffer == 0:
+        return 0
+    pointer = 4 if platform == "linux-armv7" else 8
+    return 4 * pointer + buffer
+
+
 # ---------------------------------------------------------------- charts
 
 def render_bar_chart(path: Path, title: str, targets: list[str], categories: list[str],
@@ -208,7 +245,8 @@ def render_bar_chart(path: Path, title: str, targets: list[str], categories: lis
     """One group per row, bars relative to the row's worst value."""
     left = 40 + 7.5 * max(len(category) for category in categories)
     plot_width = 600
-    right = 300
+    # Room for the longest value label after a full-length bar.
+    right = 30 + 7.5 * max(len(label) for target in targets for label in labels[target])
     width = round(left + plot_width + right)
     top = 105
     row_height = max(58, 24 * len(targets) + 18)
@@ -289,11 +327,21 @@ def compare_run(run_dir: Path) -> dict:
                          names, [case_label(m, base.params, v) for m, v in heap_keys], heap_bars, heap_labels)
         charts.append("comparison-heap.svg")
 
+    benchmark = meta["benchmark"] if meta["benchmark"] != "unknown" else run_dir.parent.name
     native_cases = [case for case in base.native if all(case in target.native for target in targets.values())]
+    own = {case: ffm_own_malloc(benchmark, case, meta["platform"]) for case in native_cases}
+    counted = "ffm" in targets and all(value is not None for value in own.values())
+
+    def native_value(target: Target, case: str) -> tuple[float, str]:
+        measured = target.native[case]
+        if target.name != "ffm" or not counted or not own[case]:
+            return measured, f"{fmt_number(measured)} B/op"
+        total = measured + own[case]
+        return total, f"{fmt_number(total)} B/op = {fmt_number(measured)} + {fmt_number(own[case])} FFM malloc"
+
     if native_cases:
-        native_bars, native_labels = chart_rows(targets, native_cases,
-                                                lambda t, c: (t.native[c], f"{fmt_number(t.native[c])} B/op"),
-                                                {"ffm": "brotli only, excludes FFM's own malloc"})
+        native_bars, native_labels = chart_rows(targets, native_cases, native_value,
+                                                None if counted else {"ffm": "brotli only, excludes FFM's own malloc"})
         render_bar_chart(run_dir / "comparison-native.svg", "Estimated native allocation",
                          names, [native_label(case) for case in native_cases], native_bars, native_labels)
         charts.append("comparison-native.svg")
@@ -317,7 +365,6 @@ def compare_run(run_dir: Path) -> dict:
                 row_verdicts.append("n/a")
         table.append(f"| {label} | " + " | ".join(cells) + " | " + " | ".join(row_verdicts) + " |")
 
-    benchmark = meta["benchmark"] if meta["benchmark"] != "unknown" else run_dir.parent.name
     report = [
         f"# {benchmark} — {jdk}",
         "",
@@ -333,9 +380,14 @@ def compare_run(run_dir: Path) -> dict:
     report += [f"![{chart}]({chart})" for chart in charts]
     if native_cases:
         report += ["", "Native allocation is estimated from async-profiler's `nativemem` samples during the "
-                   "measurement iterations. It doesn't see `ffm`'s own `malloc` downcall (32 bytes plus the input "
-                   "buffer per wrapper): FFM calls libc's `malloc` directly, past the profiler's hook. So `ffm` "
-                   "values cover brotli's allocations only, and lower `ffm` values don't mean FFM allocates less."]
+                   "measurement iterations. The profiler doesn't see `ffm`'s own `malloc` downcall: FFM calls libc's "
+                   "`malloc` directly, past the profiler's hook."]
+        if counted:
+            report[-1] += (" Its size is exact (the out-parameter cells plus the input buffer per wrapper), so `ffm` "
+                           "values are the measured value plus that count, labelled `measured + FFM malloc`.")
+        else:
+            report[-1] += (" Its size isn't known for every case of this run, so `ffm` values cover brotli's "
+                           "allocations only, and lower `ffm` values don't mean FFM allocates less.")
     report += ["", "## Execution time", "",
                "`faster` / `slower`: the difference exceeds both JMH error margins (99.9%); otherwise `same`.", ""]
     report += table
