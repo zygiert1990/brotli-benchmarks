@@ -364,6 +364,8 @@ mkdir -p -- "$RESULT_ROOT/$BENCHMARK"
 if ! mkdir -- "$RESULT_DIR"; then
     echo "Error: run already exists; select a new RUN_ID." >&2; exit 1
 fi
+# No personal paths in results, also when the run fails.
+trap 'scrub_home_paths "$RESULT_DIR"' EXIT
 {
     printf 'Benchmark: %s\nMode: %s\nTargets: %s\nPlatform: %s\n' "$BENCHMARK" "$MODE" "${TARGETS[*]}" "$NATIVE_PLATFORM"
     printf 'Extra JMH arguments: %s\nInhibition: %s\n' "${EXTRA_JMH_ARGS[*]}" "${INHIBITOR[*]:-off}"
@@ -371,10 +373,10 @@ fi
         "${LOCAL_VERSION:-unused}" "${FFM_COMMIT:-n/a}"
     "$DEFAULT_JAVA" -version 2>&1
     uname -srm
-    LC_ALL=C lscpu
+    LC_ALL=C lscpu | grep -E '^(Model name|CPU\(s\)):'
     awk '/MemTotal/ {print}' /proc/meminfo
     sha256sum "$PROJECT_DIR/src/main/resources/dataset-formatted.xml" | sed "s|$PROJECT_DIR/||g"
-    if [[ $MODE != GC ]]; then sha256sum "$ASYNC_PROFILER_LIB"; fi
+    if [[ $MODE != GC ]]; then sha256sum "$ASYNC_PROFILER_LIB" | sed 's|  .*/|  |'; fi
 } > "$RESULT_DIR/metadata.txt"
 echo "Results: $RESULT_DIR"
 

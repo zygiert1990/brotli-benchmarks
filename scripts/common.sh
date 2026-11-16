@@ -32,3 +32,20 @@ case $NATIVE_PLATFORM in
     linux-x86_64|linux-aarch64|linux-armv7|linux-ppc64le|linux-s390x|linux-riscv64) ;;
     *) echo "Error: unsupported Linux platform: $NATIVE_PLATFORM" >&2; exit 1 ;;
 esac
+
+# scrub_home_paths DIR: results are meant to be committed, so replace the home directory with ~ in every
+# text file under DIR (results, JMH JSON, metadata, flamegraphs).
+scrub_home_paths() {
+    local home=${HOME%/}
+    if [[ -z $home || $home == / || ! -d $1 ]]; then
+        return 0
+    fi
+    local pattern
+    local -a files
+    pattern=$(printf '%s' "$home" | sed 's/[][\\.*^$|]/\\&/g')
+    # grep exits with 1 when nothing matches: not an error (this also runs in the EXIT trap under set -e).
+    mapfile -d '' files < <(grep -rlIZF -- "$home" "$1" || true)
+    if (( ${#files[@]} > 0 )); then
+        sed -i "s|$pattern|~|g" -- "${files[@]}"
+    fi
+}

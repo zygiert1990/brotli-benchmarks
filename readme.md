@@ -33,8 +33,8 @@ bindings in the same build.
 Every benchmark checks its output outside the measured code (round trips, dictionary actually used) and
 fails unless the expected backend is active (`-Dbenchmark.backend=base|jni|ffm`).
 
-Test data is `src/main/resources/dataset-formatted.xml` (223634 bytes of XML records), the dataset of
-zstd-benchmarks; random data comes from a fixed seed. Qualities: 1 (fast, shows per-call cost) and 4 (typical
+Test data is `src/main/resources/dataset-formatted.xml` (223634 bytes of XML records); random
+data comes from a fixed seed. Qualities: 1 (fast, shows per-call cost) and 4 (typical
 for dynamic HTTP content). Dictionaries use quality 5, the lowest at which brotli uses them.
 
 ## Quick start
@@ -72,6 +72,17 @@ per-target hashes of the benchmark JAR and Brotli dependency JARs. These generat
 the machine that produced the results; they are not required machine settings.
 
 `scripts/run-all-benchmarks.sh --dry-run` lists the invocations without building or running anything.
+
+Compare the targets and draw charts (execution time, heap and native allocation per operation); needs
+only Python 3:
+
+```bash
+python3 scripts/compare_benchmarks.py --all                       # latest run of every benchmark + docs/summary.md
+python3 scripts/compare_benchmarks.py docs/EncoderOneShotBenchmark # latest run of one benchmark (or a run directory)
+```
+
+Each run directory gets `comparison.md` and `comparison-{performance,heap,native}.svg`. Native allocation is
+estimated from async-profiler samples, which don't see FFM's own `malloc` downcall (the report explains this).
 
 Check the scripts quickly with short runs (the results are meaningless):
 
