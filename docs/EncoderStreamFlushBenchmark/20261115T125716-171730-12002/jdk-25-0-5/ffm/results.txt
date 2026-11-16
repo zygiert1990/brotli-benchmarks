@@ -1,0 +1,31 @@
+Benchmark                                                             (messageSize)  Mode  Cnt       Score    Error   Units
+EncoderStreamFlushBenchmark.flushEveryMessage                                    64  avgt   15   22743.984 ± 76.716   us/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate                      64  avgt   15      15.287 ±  0.052  MB/sec
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate.norm                 64  avgt   15  364591.923 ±  0.625    B/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.count                           64  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.time                            64  avgt   15       6.000               ms
+EncoderStreamFlushBenchmark.flushEveryMessage                                   512  avgt   15    6846.077 ± 26.766   us/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate                     512  avgt   15       6.496 ±  0.025  MB/sec
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate.norm                512  avgt   15   46633.580 ±  0.119    B/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.count                          512  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.time                           512  avgt   15       6.000               ms
+EncoderStreamFlushBenchmark.flushEveryMessage                                  4096  avgt   15    2897.149 ± 11.932   us/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate                    4096  avgt   15       2.487 ±  0.014  MB/sec
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.alloc.rate.norm               4096  avgt   15    7556.141 ± 21.780    B/op
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.count                         4096  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.flushEveryMessage:gc.time                          4096  avgt   15       7.000               ms
+EncoderStreamFlushBenchmark.writeMessagesBuffered                                64  avgt   15    1727.791 ± 10.313   us/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate                  64  avgt   15       5.030 ±  0.026  MB/sec
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate.norm             64  avgt   15    9112.933 ± 11.990    B/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.count                       64  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.time                        64  avgt   15       6.000               ms
+EncoderStreamFlushBenchmark.writeMessagesBuffered                               512  avgt   15    1693.598 ±  5.128   us/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate                 512  avgt   15       5.125 ±  0.015  MB/sec
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate.norm            512  avgt   15    9101.859 ±  7.712    B/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.count                      512  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.time                       512  avgt   15       5.000               ms
+EncoderStreamFlushBenchmark.writeMessagesBuffered                              4096  avgt   15    1697.558 ±  6.468   us/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate                4096  avgt   15       5.113 ±  0.019  MB/sec
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.alloc.rate.norm           4096  avgt   15    9101.879 ±  7.743    B/op
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.count                     4096  avgt   15       3.000           counts
+EncoderStreamFlushBenchmark.writeMessagesBuffered:gc.time                      4096  avgt   15       5.000               ms

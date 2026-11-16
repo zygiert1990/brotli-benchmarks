@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1105" height="450" viewBox="0 0 1105 450">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="205.0" y="32" class="title">Estimated native allocation</text>
+<rect x="205.0" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="227.0" y="63" class="label">main</text>
+<rect x="325.0" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="347.0" y="63" class="label">jni</text>
+<rect x="445.0" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="467.0" y="63" class="label">ffm</text>
+<line x1="205.0" y1="93" x2="205.0" y2="402" stroke="#e5e7eb"/>
+<text x="205.0" y="425" text-anchor="middle" class="tick">0%</text>
+<line x1="355.0" y1="93" x2="355.0" y2="402" stroke="#e5e7eb"/>
+<text x="355.0" y="425" text-anchor="middle" class="tick">25%</text>
+<line x1="505.0" y1="93" x2="505.0" y2="402" stroke="#e5e7eb"/>
+<text x="505.0" y="425" text-anchor="middle" class="tick">50%</text>
+<line x1="655.0" y1="93" x2="655.0" y2="402" stroke="#e5e7eb"/>
+<text x="655.0" y="425" text-anchor="middle" class="tick">75%</text>
+<line x1="805.0" y1="93" x2="805.0" y2="402" stroke="#e5e7eb"/>
+<text x="805.0" y="425" text-anchor="middle" class="tick">100%</text>
+<line x1="205.0" y1="93" x2="205.0" y2="402" stroke="#6b7280" stroke-width="1.5"/>
+<text x="193.0" y="154.0" text-anchor="end" class="label">messageSize=4096 bytes</text>
+<rect x="205.0" y="118.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="811.0" y="131.0" class="value">11,245,530 B/op (±0%)</text>
+<rect x="205.0" y="141.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="811.0" y="154.0" class="value">★ 11,244,982 B/op (±0%)</text>
+<rect x="205.0" y="164.0" width="599.0" height="18" rx="2" fill="#ea580c"/>
+<text x="810.0" y="177.0" class="value">11,226,881 B/op (brotli only, excludes FFM&#x27;s own malloc)</text>
+<text x="193.0" y="244.0" text-anchor="end" class="label">messageSize=512 bytes</text>
+<rect x="205.0" y="208.0" width="599.8" height="18" rx="2" fill="#6b7280"/>
+<text x="810.8" y="221.0" class="value">26,308,108 B/op (±0%)</text>
+<rect x="205.0" y="231.0" width="599.7" height="18" rx="2" fill="#2563eb"/>
+<text x="810.7" y="244.0" class="value">★ 26,301,838 B/op (±0%)</text>
+<rect x="205.0" y="254.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="811.0" y="267.0" class="value">26,316,548 B/op (brotli only, excludes FFM&#x27;s own malloc)</text>
+<text x="193.0" y="334.0" text-anchor="end" class="label">messageSize=64 bytes</text>
+<rect x="205.0" y="298.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="811.0" y="311.0" class="value">149,634,238 B/op (±0%)</text>
+<rect x="205.0" y="321.0" width="595.0" height="18" rx="2" fill="#2563eb"/>
+<text x="806.0" y="334.0" class="value">★ 148,384,603 B/op (-0.8%)</text>
+<rect x="205.0" y="344.0" width="599.1" height="18" rx="2" fill="#ea580c"/>
+<text x="810.1" y="357.0" class="value">149,399,150 B/op (brotli only, excludes FFM&#x27;s own malloc)</text>
+</svg>

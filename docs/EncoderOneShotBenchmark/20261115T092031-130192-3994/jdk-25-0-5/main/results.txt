@@ -1,0 +1,61 @@
+Benchmark                                            (data)  (inputSize)  (quality)  Mode  Cnt       Score    Error   Units
+EncoderOneShotBenchmark.compress                       text          256          1  avgt   15       4.737 ±  0.041   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text          256          1  avgt   15      93.414 ±  0.816  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text          256          1  avgt   15     464.007 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count              text          256          1  avgt   15       6.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text          256          1  avgt   15      13.000               ms
+EncoderOneShotBenchmark.compress                       text          256          4  avgt   15      14.482 ±  0.062   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text          256          4  avgt   15      27.922 ±  0.120  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text          256          4  avgt   15     424.020 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count              text          256          4  avgt   15       3.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text          256          4  avgt   15       6.000               ms
+EncoderOneShotBenchmark.compress                       text        16384          1  avgt   15      34.594 ±  0.160   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text        16384          1  avgt   15     103.433 ±  0.479  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text        16384          1  avgt   15    3752.048 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count              text        16384          1  avgt   15       6.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text        16384          1  avgt   15      13.000               ms
+EncoderOneShotBenchmark.compress                       text        16384          4  avgt   15     171.361 ±  0.763   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text        16384          4  avgt   15      18.478 ±  0.082  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text        16384          4  avgt   15    3320.240 ±  0.002    B/op
+EncoderOneShotBenchmark.compress:gc.count              text        16384          4  avgt   15       3.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text        16384          4  avgt   15       6.000               ms
+EncoderOneShotBenchmark.compress                       text       131072          1  avgt   15     289.183 ±  1.869   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text       131072          1  avgt   15      77.935 ±  0.505  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text       131072          1  avgt   15   23632.406 ±  0.005    B/op
+EncoderOneShotBenchmark.compress:gc.count              text       131072          1  avgt   15       6.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text       131072          1  avgt   15      13.000               ms
+EncoderOneShotBenchmark.compress                       text       131072          4  avgt   15    1025.479 ±  4.165   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate         text       131072          4  avgt   15      20.066 ±  0.081  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm    text       131072          4  avgt   15   21577.435 ±  0.007    B/op
+EncoderOneShotBenchmark.compress:gc.count              text       131072          4  avgt   15       3.000           counts
+EncoderOneShotBenchmark.compress:gc.time               text       131072          4  avgt   15       6.000               ms
+EncoderOneShotBenchmark.compress                     random          256          1  avgt   15       7.476 ±  0.047   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random          256          1  avgt   15      66.334 ±  0.421  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random          256          1  avgt   15     520.010 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count            random          256          1  avgt   15       3.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random          256          1  avgt   15       5.000               ms
+EncoderOneShotBenchmark.compress                     random          256          4  avgt   15      15.766 ±  0.072   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random          256          4  avgt   15      31.455 ±  0.143  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random          256          4  avgt   15     520.022 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count            random          256          4  avgt   15       3.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random          256          4  avgt   15       6.000               ms
+EncoderOneShotBenchmark.compress                     random        16384          1  avgt   15      56.035 ±  0.226   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random        16384          1  avgt   15     283.332 ±  1.140  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random        16384          1  avgt   15   16648.079 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count            random        16384          1  avgt   15      18.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random        16384          1  avgt   15      35.000               ms
+EncoderOneShotBenchmark.compress                     random        16384          4  avgt   15     138.561 ±  2.060   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random        16384          4  avgt   15     114.765 ±  1.676  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random        16384          4  avgt   15   16672.195 ±  0.003    B/op
+EncoderOneShotBenchmark.compress:gc.count            random        16384          4  avgt   15       9.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random        16384          4  avgt   15      21.000               ms
+EncoderOneShotBenchmark.compress                     random       131072          1  avgt   15      44.108 ±  0.752   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random       131072          1  avgt   15    2840.181 ± 48.492  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random       131072          1  avgt   15  131336.062 ±  0.001    B/op
+EncoderOneShotBenchmark.compress:gc.count            random       131072          1  avgt   15     199.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random       131072          1  avgt   15     272.000               ms
+EncoderOneShotBenchmark.compress                     random       131072          4  avgt   15     193.294 ±  4.041   us/op
+EncoderOneShotBenchmark.compress:gc.alloc.rate       random       131072          4  avgt   15     648.310 ± 13.612  MB/sec
+EncoderOneShotBenchmark.compress:gc.alloc.rate.norm  random       131072          4  avgt   15  131360.273 ±  0.006    B/op
+EncoderOneShotBenchmark.compress:gc.count            random       131072          4  avgt   15      45.000           counts
+EncoderOneShotBenchmark.compress:gc.time             random       131072          4  avgt   15      77.000               ms

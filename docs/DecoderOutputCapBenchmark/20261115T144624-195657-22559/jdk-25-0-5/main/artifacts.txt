@@ -1,0 +1,7 @@
+Target: main
+Version: 1.24.0-MAIN-0a0ac32db6
+JVM options: -Dbenchmark.backend=base
+caca55f91d5d4015a18d2bafe54e32a320413c240410fee81ab9b69679506239  target/benchmarks.jar
+38b27084eda1f36090313b5256fa133ebc42bf081b8e60cb937ca130b49e3ef9  target/brotli-artifacts/brotli4j-1.24.0-MAIN-0a0ac32db6.jar
+e666c605e12d1a56c04a5b628268acb56bb09d0f81b3b70f8dfe34130daa4056  target/brotli-artifacts/native-linux-x86_64-1.24.0-MAIN-0a0ac32db6.jar
+c4622505cdf31952f177eac2001f74bb3367db0b94e25ab122228c9a4cef3ba2  target/brotli-artifacts/service-1.24.0-MAIN-0a0ac32db6.jar

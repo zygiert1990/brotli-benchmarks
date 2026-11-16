@@ -1,0 +1,23 @@
+Benchmark                                                              (bufferSize)  Mode  Cnt     Score   Error   Units
+DecoderStreamBufferSizeBenchmark.decompressDataset                               64  avgt   15   483.916 ± 1.369   us/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate                 64  avgt   15     0.931 ± 0.003  MB/sec
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate.norm            64  avgt   15   472.675 ± 0.002    B/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.count                      64  avgt   15       ≈ 0          counts
+DecoderStreamBufferSizeBenchmark.decompressDataset                              512  avgt   15   329.165 ± 1.901   us/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate                512  avgt   15     2.667 ± 0.015  MB/sec
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate.norm           512  avgt   15   920.460 ± 0.004    B/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.count                     512  avgt   15       ≈ 0          counts
+DecoderStreamBufferSizeBenchmark.decompressDataset                             4096  avgt   15   309.530 ± 0.382   us/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate               4096  avgt   15    13.878 ± 0.017  MB/sec
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate.norm          4096  avgt   15  4504.433 ± 0.003    B/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.count                    4096  avgt   15       ≈ 0          counts
+DecoderStreamBufferSizeBenchmark.decompressDataset                            16384  avgt   15   306.646 ± 1.727   us/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate              16384  avgt   15    26.747 ± 0.151  MB/sec
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate.norm         16384  avgt   15  8600.430 ± 0.003    B/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.count                   16384  avgt   15     3.000          counts
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.time                    16384  avgt   15     5.000              ms
+DecoderStreamBufferSizeBenchmark.decompressDataset                            65536  avgt   15   304.250 ± 1.114   us/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate              65536  avgt   15    26.957 ± 0.098  MB/sec
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.alloc.rate.norm         65536  avgt   15  8600.426 ± 0.003    B/op
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.count                   65536  avgt   15     3.000          counts
+DecoderStreamBufferSizeBenchmark.decompressDataset:gc.time                    65536  avgt   15     5.000              ms

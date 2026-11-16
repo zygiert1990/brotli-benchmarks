@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1322" height="1080" viewBox="0 0 1322 1080">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="422.5" y="32" class="title">Execution time (bar length relative to row worst)</text>
+<rect x="422.5" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="444.5" y="63" class="label">main</text>
+<rect x="542.5" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="564.5" y="63" class="label">jni</text>
+<rect x="662.5" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="684.5" y="63" class="label">ffm</text>
+<line x1="422.5" y1="93" x2="422.5" y2="1032" stroke="#e5e7eb"/>
+<text x="422.5" y="1055" text-anchor="middle" class="tick">0%</text>
+<line x1="572.5" y1="93" x2="572.5" y2="1032" stroke="#e5e7eb"/>
+<text x="572.5" y="1055" text-anchor="middle" class="tick">25%</text>
+<line x1="722.5" y1="93" x2="722.5" y2="1032" stroke="#e5e7eb"/>
+<text x="722.5" y="1055" text-anchor="middle" class="tick">50%</text>
+<line x1="872.5" y1="93" x2="872.5" y2="1032" stroke="#e5e7eb"/>
+<text x="872.5" y="1055" text-anchor="middle" class="tick">75%</text>
+<line x1="1022.5" y1="93" x2="1022.5" y2="1032" stroke="#e5e7eb"/>
+<text x="1022.5" y="1055" text-anchor="middle" class="tick">100%</text>
+<line x1="422.5" y1="93" x2="422.5" y2="1032" stroke="#6b7280" stroke-width="1.5"/>
+<text x="410.5" y="154.0" text-anchor="end" class="label">compressDataset · bufferSize=64 bytes, quality=1</text>
+<rect x="422.5" y="118.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="131.0" class="value">14,761 ± 118 us/op (±0%)</text>
+<rect x="422.5" y="141.0" width="597.6" height="18" rx="2" fill="#2563eb"/>
+<text x="1026.1" y="154.0" class="value">14,700 ± 86.9 us/op (-0.4%)</text>
+<rect x="422.5" y="164.0" width="560.1" height="18" rx="2" fill="#ea580c"/>
+<text x="988.6" y="177.0" class="value">★ 13,779 ± 58.4 us/op (-6.6%)</text>
+<text x="410.5" y="244.0" text-anchor="end" class="label">compressDataset · bufferSize=64 bytes, quality=4</text>
+<rect x="422.5" y="208.0" width="596.7" height="18" rx="2" fill="#6b7280"/>
+<text x="1025.2" y="221.0" class="value">2,004 ± 7.682 us/op (±0%)</text>
+<rect x="422.5" y="231.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1028.5" y="244.0" class="value">2,015 ± 10.6 us/op (+0.6%)</text>
+<rect x="422.5" y="254.0" width="558.5" height="18" rx="2" fill="#ea580c"/>
+<text x="987.0" y="267.0" class="value">★ 1,876 ± 6.448 us/op (-6.4%)</text>
+<text x="410.5" y="334.0" text-anchor="end" class="label">compressDataset · bufferSize=512 bytes, quality=1</text>
+<rect x="422.5" y="298.0" width="599.2" height="18" rx="2" fill="#6b7280"/>
+<text x="1027.7" y="311.0" class="value">3,888 ± 8.813 us/op (±0%)</text>
+<rect x="422.5" y="321.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1028.5" y="334.0" class="value">3,894 ± 9.208 us/op (+0.1%)</text>
+<rect x="422.5" y="344.0" width="578.3" height="18" rx="2" fill="#ea580c"/>
+<text x="1006.8" y="357.0" class="value">★ 3,753 ± 9.602 us/op (-3.5%)</text>
+<text x="410.5" y="424.0" text-anchor="end" class="label">compressDataset · bufferSize=512 bytes, quality=4</text>
+<rect x="422.5" y="388.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="401.0" class="value">1,728 ± 8.047 us/op (±0%)</text>
+<rect x="422.5" y="411.0" width="597.1" height="18" rx="2" fill="#2563eb"/>
+<text x="1025.6" y="424.0" class="value">1,720 ± 3.846 us/op (-0.5%)</text>
+<rect x="422.5" y="434.0" width="594.4" height="18" rx="2" fill="#ea580c"/>
+<text x="1022.9" y="447.0" class="value">★ 1,712 ± 7.253 us/op (-0.9%)</text>
+<text x="410.5" y="514.0" text-anchor="end" class="label">compressDataset · bufferSize=4096 bytes, quality=1</text>
+<rect x="422.5" y="478.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="491.0" class="value">1,069 ± 3.899 us/op (±0%)</text>
+<rect x="422.5" y="501.0" width="596.1" height="18" rx="2" fill="#2563eb"/>
+<text x="1024.6" y="514.0" class="value">1,062 ± 1.217 us/op (-0.6%)</text>
+<rect x="422.5" y="524.0" width="586.8" height="18" rx="2" fill="#ea580c"/>
+<text x="1015.3" y="537.0" class="value">★ 1,045 ± 2.299 us/op (-2.2%)</text>
+<text x="410.5" y="604.0" text-anchor="end" class="label">compressDataset · bufferSize=4096 bytes, quality=4</text>
+<rect x="422.5" y="568.0" width="599.1" height="18" rx="2" fill="#6b7280"/>
+<text x="1027.6" y="581.0" class="value">★ 1,689 ± 7.331 us/op (±0%)</text>
+<rect x="422.5" y="591.0" width="599.8" height="18" rx="2" fill="#2563eb"/>
+<text x="1028.3" y="604.0" class="value">1,691 ± 6.556 us/op (+0.1%)</text>
+<rect x="422.5" y="614.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1028.5" y="627.0" class="value">1,692 ± 6.456 us/op (+0.2%)</text>
+<text x="410.5" y="694.0" text-anchor="end" class="label">compressDataset · bufferSize=16384 bytes, quality=1</text>
+<rect x="422.5" y="658.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="671.0" class="value">669 ± 1.412 us/op (±0%)</text>
+<rect x="422.5" y="681.0" width="594.9" height="18" rx="2" fill="#2563eb"/>
+<text x="1023.4" y="694.0" class="value">663 ± 2.320 us/op (-0.8%)</text>
+<rect x="422.5" y="704.0" width="590.1" height="18" rx="2" fill="#ea580c"/>
+<text x="1018.6" y="717.0" class="value">★ 658 ± 2.627 us/op (-1.6%)</text>
+<text x="410.5" y="784.0" text-anchor="end" class="label">compressDataset · bufferSize=16384 bytes, quality=4</text>
+<rect x="422.5" y="748.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="761.0" class="value">1,694 ± 6.713 us/op (±0%)</text>
+<rect x="422.5" y="771.0" width="596.9" height="18" rx="2" fill="#2563eb"/>
+<text x="1025.4" y="784.0" class="value">★ 1,686 ± 4.034 us/op (-0.5%)</text>
+<rect x="422.5" y="794.0" width="598.8" height="18" rx="2" fill="#ea580c"/>
+<text x="1027.3" y="807.0" class="value">1,691 ± 7.758 us/op (-0.2%)</text>
+<text x="410.5" y="874.0" text-anchor="end" class="label">compressDataset · bufferSize=65536 bytes, quality=1</text>
+<rect x="422.5" y="838.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="851.0" class="value">511 ± 2.023 us/op (±0%)</text>
+<rect x="422.5" y="861.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1028.5" y="874.0" class="value">511 ± 1.571 us/op (±0%)</text>
+<rect x="422.5" y="884.0" width="595.6" height="18" rx="2" fill="#ea580c"/>
+<text x="1024.1" y="897.0" class="value">★ 508 ± 3.003 us/op (-0.7%)</text>
+<text x="410.5" y="964.0" text-anchor="end" class="label">compressDataset · bufferSize=65536 bytes, quality=4</text>
+<rect x="422.5" y="928.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1028.5" y="941.0" class="value">1,697 ± 5.020 us/op (±0%)</text>
+<rect x="422.5" y="951.0" width="599.7" height="18" rx="2" fill="#2563eb"/>
+<text x="1028.2" y="964.0" class="value">1,696 ± 10.6 us/op (-0.1%)</text>
+<rect x="422.5" y="974.0" width="599.3" height="18" rx="2" fill="#ea580c"/>
+<text x="1027.8" y="987.0" class="value">★ 1,695 ± 8.120 us/op (-0.1%)</text>
+</svg>
