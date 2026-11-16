@@ -1,0 +1,21 @@
+Benchmark                                                       (maxOutputChunkSize)  Mode  Cnt       Score    Error   Units
+DecoderOutputCapBenchmark.decompressDataset                                       64  avgt   15     449.778 ±  5.764   us/op
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate                         64  avgt   15     789.211 ± 10.100  MB/sec
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate.norm                    64  avgt   15  372176.632 ±  0.008    B/op
+DecoderOutputCapBenchmark.decompressDataset:gc.count                              64  avgt   15      49.000           counts
+DecoderOutputCapBenchmark.decompressDataset:gc.time                               64  avgt   15      91.000               ms
+DecoderOutputCapBenchmark.decompressDataset                                      512  avgt   15     321.690 ±  1.021   us/op
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate                        512  avgt   15     160.509 ±  0.511  MB/sec
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate.norm                   512  avgt   15   54144.452 ±  0.004    B/op
+DecoderOutputCapBenchmark.decompressDataset:gc.count                             512  avgt   15       9.000           counts
+DecoderOutputCapBenchmark.decompressDataset:gc.time                              512  avgt   15      21.000               ms
+DecoderOutputCapBenchmark.decompressDataset                                     4096  avgt   15     306.055 ±  1.635   us/op
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate                       4096  avgt   15      44.921 ±  0.239  MB/sec
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate.norm                  4096  avgt   15   14416.429 ±  0.004    B/op
+DecoderOutputCapBenchmark.decompressDataset:gc.count                            4096  avgt   15       6.000           counts
+DecoderOutputCapBenchmark.decompressDataset:gc.time                             4096  avgt   15      11.000               ms
+DecoderOutputCapBenchmark.decompressDataset                                    65536  avgt   15     303.221 ±  0.554   us/op
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate                      65536  avgt   15      28.659 ±  0.052  MB/sec
+DecoderOutputCapBenchmark.decompressDataset:gc.alloc.rate.norm                 65536  avgt   15    9112.425 ±  0.003    B/op
+DecoderOutputCapBenchmark.decompressDataset:gc.count                           65536  avgt   15       3.000           counts
+DecoderOutputCapBenchmark.decompressDataset:gc.time                            65536  avgt   15       6.000               ms

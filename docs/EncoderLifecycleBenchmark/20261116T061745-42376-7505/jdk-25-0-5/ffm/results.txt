@@ -1,0 +1,21 @@
+Benchmark                                                                            Mode  Cnt     Score     Error   Units
+EncoderLifecycleBenchmark.createAndCloseEmptyStream                                  avgt   15     0.421 ±   0.011   us/op
+EncoderLifecycleBenchmark.createAndCloseEmptyStream:gc.alloc.rate                    avgt   15  1415.562 ±  36.535  MB/sec
+EncoderLifecycleBenchmark.createAndCloseEmptyStream:gc.alloc.rate.norm               avgt   15   624.001 ±   0.001    B/op
+EncoderLifecycleBenchmark.createAndCloseEmptyStream:gc.count                         avgt   15    86.000            counts
+EncoderLifecycleBenchmark.createAndCloseEmptyStream:gc.time                          avgt   15   124.000                ms
+EncoderLifecycleBenchmark.createAndCloseEmptyStreamOnFourThreads                     avgt   15     0.456 ±   0.035   us/op
+EncoderLifecycleBenchmark.createAndCloseEmptyStreamOnFourThreads:gc.alloc.rate       avgt   15  5300.698 ± 304.994  MB/sec
+EncoderLifecycleBenchmark.createAndCloseEmptyStreamOnFourThreads:gc.alloc.rate.norm  avgt   15   629.340 ±   8.341    B/op
+EncoderLifecycleBenchmark.createAndCloseEmptyStreamOnFourThreads:gc.count            avgt   15   324.000            counts
+EncoderLifecycleBenchmark.createAndCloseEmptyStreamOnFourThreads:gc.time             avgt   15   331.000                ms
+EncoderLifecycleBenchmark.createAndDestroyWrapper                                    avgt   15     0.227 ±   0.006   us/op
+EncoderLifecycleBenchmark.createAndDestroyWrapper:gc.alloc.rate                      avgt   15  1309.615 ±  33.071  MB/sec
+EncoderLifecycleBenchmark.createAndDestroyWrapper:gc.alloc.rate.norm                 avgt   15   312.000 ±   0.001    B/op
+EncoderLifecycleBenchmark.createAndDestroyWrapper:gc.count                           avgt   15    80.000            counts
+EncoderLifecycleBenchmark.createAndDestroyWrapper:gc.time                            avgt   15   117.000                ms
+EncoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads                       avgt   15     0.208 ±   0.003   us/op
+EncoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.alloc.rate         avgt   15  5718.288 ±  73.571  MB/sec
+EncoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.alloc.rate.norm    avgt   15   312.000 ±   0.001    B/op
+EncoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.count              avgt   15   350.000            counts
+EncoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.time               avgt   15   364.000                ms

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1308" height="1260" viewBox="0 0 1308 1260">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="467.5" y="32" class="title">On-heap allocation (bar length relative to row worst)</text>
+<rect x="467.5" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="489.5" y="63" class="label">main</text>
+<rect x="587.5" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="609.5" y="63" class="label">jni</text>
+<rect x="707.5" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="729.5" y="63" class="label">ffm</text>
+<line x1="467.5" y1="93" x2="467.5" y2="1212" stroke="#e5e7eb"/>
+<text x="467.5" y="1235" text-anchor="middle" class="tick">0%</text>
+<line x1="617.5" y1="93" x2="617.5" y2="1212" stroke="#e5e7eb"/>
+<text x="617.5" y="1235" text-anchor="middle" class="tick">25%</text>
+<line x1="767.5" y1="93" x2="767.5" y2="1212" stroke="#e5e7eb"/>
+<text x="767.5" y="1235" text-anchor="middle" class="tick">50%</text>
+<line x1="917.5" y1="93" x2="917.5" y2="1212" stroke="#e5e7eb"/>
+<text x="917.5" y="1235" text-anchor="middle" class="tick">75%</text>
+<line x1="1067.5" y1="93" x2="1067.5" y2="1212" stroke="#e5e7eb"/>
+<text x="1067.5" y="1235" text-anchor="middle" class="tick">100%</text>
+<line x1="467.5" y1="93" x2="467.5" y2="1212" stroke="#6b7280" stroke-width="1.5"/>
+<text x="455.5" y="154.0" text-anchor="end" class="label">compress · data=text, inputSize=256 bytes, quality=1</text>
+<rect x="467.5" y="118.0" width="386.7" height="18" rx="2" fill="#6b7280"/>
+<text x="860.2" y="131.0" class="value">★ 464 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="141.0" width="386.7" height="18" rx="2" fill="#2563eb"/>
+<text x="860.2" y="154.0" class="value">★ 464 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="164.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="177.0" class="value">720 ± 0.001 B/op (+55.2%)</text>
+<text x="455.5" y="244.0" text-anchor="end" class="label">compress · data=text, inputSize=256 bytes, quality=4</text>
+<rect x="467.5" y="208.0" width="441.7" height="18" rx="2" fill="#6b7280"/>
+<text x="915.2" y="221.0" class="value">★ 424 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="231.0" width="441.7" height="18" rx="2" fill="#2563eb"/>
+<text x="915.2" y="244.0" class="value">★ 424 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="254.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="267.0" class="value">576 ± 0.001 B/op (+35.8%)</text>
+<text x="455.5" y="334.0" text-anchor="end" class="label">compress · data=text, inputSize=16384 bytes, quality=1</text>
+<rect x="467.5" y="298.0" width="576.6" height="18" rx="2" fill="#6b7280"/>
+<text x="1050.1" y="311.0" class="value">3,752 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="321.0" width="576.6" height="18" rx="2" fill="#2563eb"/>
+<text x="1050.1" y="334.0" class="value">★ 3,752 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="344.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="357.0" class="value">3,904 ± 0.001 B/op (+4.1%)</text>
+<text x="455.5" y="424.0" text-anchor="end" class="label">compress · data=text, inputSize=16384 bytes, quality=4</text>
+<rect x="467.5" y="388.0" width="577.7" height="18" rx="2" fill="#6b7280"/>
+<text x="1051.2" y="401.0" class="value">3,320 ± 0.002 B/op (±0%)</text>
+<rect x="467.5" y="411.0" width="573.6" height="18" rx="2" fill="#2563eb"/>
+<text x="1047.1" y="424.0" class="value">★ 3,297 ± 0.769 B/op (-0.7%)</text>
+<rect x="467.5" y="434.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="447.0" class="value">3,448 ± 0.002 B/op (+3.9%)</text>
+<text x="455.5" y="514.0" text-anchor="end" class="label">compress · data=text, inputSize=131072 bytes, quality=1</text>
+<rect x="467.5" y="478.0" width="596.8" height="18" rx="2" fill="#6b7280"/>
+<text x="1070.3" y="491.0" class="value">23,632 ± 0.005 B/op (±0%)</text>
+<rect x="467.5" y="501.0" width="596.7" height="18" rx="2" fill="#2563eb"/>
+<text x="1070.2" y="514.0" class="value">★ 23,630 ± 16.7 B/op (±0%)</text>
+<rect x="467.5" y="524.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="537.0" class="value">23,760 ± 0.004 B/op (+0.5%)</text>
+<text x="455.5" y="604.0" text-anchor="end" class="label">compress · data=text, inputSize=131072 bytes, quality=4</text>
+<rect x="467.5" y="568.0" width="595.8" height="18" rx="2" fill="#6b7280"/>
+<text x="1069.3" y="581.0" class="value">21,577 ± 0.005 B/op (±0%)</text>
+<rect x="467.5" y="591.0" width="595.8" height="18" rx="2" fill="#2563eb"/>
+<text x="1069.3" y="604.0" class="value">★ 21,577 ± 0.008 B/op (±0%)</text>
+<rect x="467.5" y="614.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="627.0" class="value">21,729 ± 0.006 B/op (+0.7%)</text>
+<text x="455.5" y="694.0" text-anchor="end" class="label">compress · data=random, inputSize=256 bytes, quality=1</text>
+<rect x="467.5" y="658.0" width="425.5" height="18" rx="2" fill="#6b7280"/>
+<text x="899.0" y="671.0" class="value">★ 520 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="681.0" width="425.5" height="18" rx="2" fill="#2563eb"/>
+<text x="899.0" y="694.0" class="value">★ 520 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="704.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="717.0" class="value">733 ± 66.8 B/op (+41.0%)</text>
+<text x="455.5" y="784.0" text-anchor="end" class="label">compress · data=random, inputSize=256 bytes, quality=4</text>
+<rect x="467.5" y="748.0" width="484.3" height="18" rx="2" fill="#6b7280"/>
+<text x="957.8" y="761.0" class="value">★ 536 ± 12.5 B/op (±0%)</text>
+<rect x="467.5" y="771.0" width="489.2" height="18" rx="2" fill="#2563eb"/>
+<text x="962.7" y="784.0" class="value">541 ± 16.7 B/op (+1.0%)</text>
+<rect x="467.5" y="794.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="807.0" class="value">664 ± 12.5 B/op (+23.9%)</text>
+<text x="455.5" y="874.0" text-anchor="end" class="label">compress · data=random, inputSize=16384 bytes, quality=1</text>
+<rect x="467.5" y="838.0" width="594.6" height="18" rx="2" fill="#6b7280"/>
+<text x="1068.1" y="851.0" class="value">★ 16,648 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="861.0" width="595.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1068.5" y="874.0" class="value">16,659 ± 16.7 B/op (+0.1%)</text>
+<rect x="467.5" y="884.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="897.0" class="value">16,800 ± 0.001 B/op (+0.9%)</text>
+<text x="455.5" y="964.0" text-anchor="end" class="label">compress · data=random, inputSize=16384 bytes, quality=4</text>
+<rect x="467.5" y="928.0" width="595.7" height="18" rx="2" fill="#6b7280"/>
+<text x="1069.2" y="941.0" class="value">★ 16,672 ± 0.002 B/op (±0%)</text>
+<rect x="467.5" y="951.0" width="596.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1069.5" y="964.0" class="value">16,680 ± 0.002 B/op (±0%)</text>
+<rect x="467.5" y="974.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="987.0" class="value">16,792 ± 12.5 B/op (+0.7%)</text>
+<text x="455.5" y="1054.0" text-anchor="end" class="label">compress · data=random, inputSize=131072 bytes, quality=1</text>
+<rect x="467.5" y="1018.0" width="599.1" height="18" rx="2" fill="#6b7280"/>
+<text x="1072.6" y="1031.0" class="value">★ 131,336 ± 0.001 B/op (±0%)</text>
+<rect x="467.5" y="1041.0" width="599.2" height="18" rx="2" fill="#2563eb"/>
+<text x="1072.7" y="1054.0" class="value">131,347 ± 16.7 B/op (±0%)</text>
+<rect x="467.5" y="1064.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="1077.0" class="value">131,523 ± 54.3 B/op (+0.1%)</text>
+<text x="455.5" y="1144.0" text-anchor="end" class="label">compress · data=random, inputSize=131072 bytes, quality=4</text>
+<rect x="467.5" y="1108.0" width="599.4" height="18" rx="2" fill="#6b7280"/>
+<text x="1072.9" y="1121.0" class="value">★ 131,360 ± 0.004 B/op (±0%)</text>
+<rect x="467.5" y="1131.0" width="599.5" height="18" rx="2" fill="#2563eb"/>
+<text x="1073.0" y="1144.0" class="value">131,368 ± 0.002 B/op (±0%)</text>
+<rect x="467.5" y="1154.0" width="600.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1073.5" y="1167.0" class="value">131,488 ± 0.005 B/op (+0.1%)</text>
+</svg>

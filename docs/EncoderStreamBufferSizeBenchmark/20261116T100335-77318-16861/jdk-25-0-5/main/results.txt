@@ -1,0 +1,50 @@
+Benchmark                                                            (bufferSize)  (quality)  Mode  Cnt       Score    Error   Units
+EncoderStreamBufferSizeBenchmark.compressDataset                               64          1  avgt   15   14646.272 ± 63.179   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate                 64          1  avgt   15      14.594 ±  0.063  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm            64          1  avgt   15  224132.399 ±  0.079    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                      64          1  avgt   15         ≈ 0           counts
+EncoderStreamBufferSizeBenchmark.compressDataset                               64          4  avgt   15    2009.539 ±  6.412   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate                 64          4  avgt   15       4.090 ±  0.013  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm            64          4  avgt   15    8619.311 ±  1.083    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                      64          4  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                       64          4  avgt   15       3.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                              512          1  avgt   15    3891.108 ± 21.412   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate                512          1  avgt   15       7.078 ±  0.039  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm           512          1  avgt   15   28878.417 ±  2.123    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                     512          1  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                      512          1  avgt   15       4.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                              512          4  avgt   15    1726.612 ±  9.602   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate                512          4  avgt   15       4.717 ±  0.026  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm           512          4  avgt   15    8540.635 ±  4.907    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                     512          4  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                      512          4  avgt   15       3.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                             4096          1  avgt   15    1066.438 ±  1.849   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate               4096          1  avgt   15       4.394 ±  0.008  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm          4096          1  avgt   15    4913.495 ±  0.016    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                    4096          1  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                     4096          1  avgt   15       4.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                             4096          4  avgt   15    1686.914 ±  6.838   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate               4096          4  avgt   15       4.872 ±  0.019  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm          4096          4  avgt   15    8618.782 ±  0.915    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                    4096          4  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                     4096          4  avgt   15       4.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                            16384          1  avgt   15     663.617 ±  1.959   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate              16384          1  avgt   15       6.830 ±  0.020  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm         16384          1  avgt   15    4752.930 ±  0.010    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                   16384          1  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                    16384          1  avgt   15       3.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                            16384          4  avgt   15    1690.422 ±  4.125   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate              16384          4  avgt   15       4.862 ±  0.012  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm         16384          4  avgt   15    8618.783 ±  0.913    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                   16384          4  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                    16384          4  avgt   15       3.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                            65536          1  avgt   15     510.100 ±  2.307   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate              65536          1  avgt   15      16.468 ±  0.075  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm         65536          1  avgt   15    8808.713 ±  0.005    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                   65536          1  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                    65536          1  avgt   15       8.000               ms
+EncoderStreamBufferSizeBenchmark.compressDataset                            65536          4  avgt   15    1687.533 ±  6.940   us/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate              65536          4  avgt   15       4.871 ±  0.020  MB/sec
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.alloc.rate.norm         65536          4  avgt   15    8618.783 ±  0.915    B/op
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.count                   65536          4  avgt   15       3.000           counts
+EncoderStreamBufferSizeBenchmark.compressDataset:gc.time                    65536          4  avgt   15       3.000               ms

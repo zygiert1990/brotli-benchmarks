@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1322" height="540" viewBox="0 0 1322 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="325.0" y="32" class="title">Estimated native allocation</text>
+<rect x="325.0" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="347.0" y="63" class="label">main</text>
+<rect x="445.0" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="467.0" y="63" class="label">jni</text>
+<rect x="565.0" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="587.0" y="63" class="label">ffm</text>
+<line x1="325.0" y1="93" x2="325.0" y2="492" stroke="#e5e7eb"/>
+<text x="325.0" y="515" text-anchor="middle" class="tick">0%</text>
+<line x1="475.0" y1="93" x2="475.0" y2="492" stroke="#e5e7eb"/>
+<text x="475.0" y="515" text-anchor="middle" class="tick">25%</text>
+<line x1="625.0" y1="93" x2="625.0" y2="492" stroke="#e5e7eb"/>
+<text x="625.0" y="515" text-anchor="middle" class="tick">50%</text>
+<line x1="775.0" y1="93" x2="775.0" y2="492" stroke="#e5e7eb"/>
+<text x="775.0" y="515" text-anchor="middle" class="tick">75%</text>
+<line x1="925.0" y1="93" x2="925.0" y2="492" stroke="#e5e7eb"/>
+<text x="925.0" y="515" text-anchor="middle" class="tick">100%</text>
+<line x1="325.0" y1="93" x2="325.0" y2="492" stroke="#6b7280" stroke-width="1.5"/>
+<text x="313.0" y="154.0" text-anchor="end" class="label">createAndCloseEmptyStream</text>
+<rect x="325.0" y="118.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="931.0" y="131.0" class="value">23,521 B/op (±0%)</text>
+<rect x="325.0" y="141.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="931.0" y="154.0" class="value">23,521 B/op (±0%)</text>
+<rect x="325.0" y="164.0" width="596.7" height="18" rx="2" fill="#ea580c"/>
+<text x="927.7" y="177.0" class="value">★ 23,392 B/op = 6,976 + 16,416 FFM malloc (-0.5%)</text>
+<text x="313.0" y="244.0" text-anchor="end" class="label">createAndCloseEmptyStreamOnFourThreads</text>
+<rect x="325.0" y="208.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="931.0" y="221.0" class="value">23,524 B/op (±0%)</text>
+<rect x="325.0" y="231.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="931.0" y="244.0" class="value">23,524 B/op (±0%)</text>
+<rect x="325.0" y="254.0" width="596.7" height="18" rx="2" fill="#ea580c"/>
+<text x="927.7" y="267.0" class="value">★ 23,396 B/op = 6,980 + 16,416 FFM malloc (-0.5%)</text>
+<text x="313.0" y="334.0" text-anchor="end" class="label">createAndDestroyWrapper</text>
+<rect x="325.0" y="298.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="931.0" y="311.0" class="value">23,521 B/op (±0%)</text>
+<rect x="325.0" y="321.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="931.0" y="334.0" class="value">23,521 B/op (±0%)</text>
+<rect x="325.0" y="344.0" width="596.7" height="18" rx="2" fill="#ea580c"/>
+<text x="927.7" y="357.0" class="value">★ 23,392 B/op = 6,976 + 16,416 FFM malloc (-0.5%)</text>
+<text x="313.0" y="424.0" text-anchor="end" class="label">createAndDestroyWrapperOnFourThreads</text>
+<rect x="325.0" y="388.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="931.0" y="401.0" class="value">23,534 B/op (±0%)</text>
+<rect x="325.0" y="411.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="931.0" y="424.0" class="value">23,532 B/op (±0%)</text>
+<rect x="325.0" y="434.0" width="596.4" height="18" rx="2" fill="#ea580c"/>
+<text x="927.4" y="447.0" class="value">★ 23,394 B/op = 6,978 + 16,416 FFM malloc (-0.6%)</text>
+</svg>

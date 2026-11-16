@@ -1,7 +1,0 @@
-Target: ffm
-Version: 1.24.0-FFM-504f982a60
-JVM options: -Dbrotli4j.backend=ffm -Dbenchmark.backend=ffm
-b77d5b88758eb9d05e92047c3b5a86a484fbb55769136d72da1e7d1c5e3f9ee3  target/benchmarks.jar
-20673b0d377bfd8a6e8f979edae50a494ed1658db05ce115df909053c94ac6d3  target/brotli-artifacts/brotli4j-1.24.0-FFM-504f982a60.jar
-b70af77b4813c3b4ae32976645e29299102a591c2f31b0cdf8d38ee440740dd0  target/brotli-artifacts/native-linux-x86_64-1.24.0-FFM-504f982a60.jar
-4bc6464987b042e762beb669a6558858602282f39cdba76a637adf560ed947fa  target/brotli-artifacts/service-1.24.0-FFM-504f982a60.jar

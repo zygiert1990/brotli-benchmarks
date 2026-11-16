@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1255" height="720" viewBox="0 0 1255 720">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="400.0" y="32" class="title">Execution time (bar length relative to row worst)</text>
+<rect x="400.0" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="422.0" y="63" class="label">main</text>
+<rect x="520.0" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="542.0" y="63" class="label">jni</text>
+<rect x="640.0" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="662.0" y="63" class="label">ffm</text>
+<line x1="400.0" y1="93" x2="400.0" y2="672" stroke="#e5e7eb"/>
+<text x="400.0" y="695" text-anchor="middle" class="tick">0%</text>
+<line x1="550.0" y1="93" x2="550.0" y2="672" stroke="#e5e7eb"/>
+<text x="550.0" y="695" text-anchor="middle" class="tick">25%</text>
+<line x1="700.0" y1="93" x2="700.0" y2="672" stroke="#e5e7eb"/>
+<text x="700.0" y="695" text-anchor="middle" class="tick">50%</text>
+<line x1="850.0" y1="93" x2="850.0" y2="672" stroke="#e5e7eb"/>
+<text x="850.0" y="695" text-anchor="middle" class="tick">75%</text>
+<line x1="1000.0" y1="93" x2="1000.0" y2="672" stroke="#e5e7eb"/>
+<text x="1000.0" y="695" text-anchor="middle" class="tick">100%</text>
+<line x1="400.0" y1="93" x2="400.0" y2="672" stroke="#6b7280" stroke-width="1.5"/>
+<text x="388.0" y="154.0" text-anchor="end" class="label">decompress · data=text, inputSize=256 bytes</text>
+<rect x="400.0" y="118.0" width="598.6" height="18" rx="2" fill="#6b7280"/>
+<text x="1004.6" y="131.0" class="value">3.035 ± 0.015 us/op (±0%)</text>
+<rect x="400.0" y="141.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1006.0" y="154.0" class="value">3.042 ± 0.018 us/op (+0.2%)</text>
+<rect x="400.0" y="164.0" width="512.4" height="18" rx="2" fill="#ea580c"/>
+<text x="918.4" y="177.0" class="value">★ 2.598 ± 0.023 us/op (-14.4%)</text>
+<text x="388.0" y="244.0" text-anchor="end" class="label">decompress · data=text, inputSize=16384 bytes</text>
+<rect x="400.0" y="208.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1006.0" y="221.0" class="value">21.7 ± 0.042 us/op (±0%)</text>
+<rect x="400.0" y="231.0" width="597.8" height="18" rx="2" fill="#2563eb"/>
+<text x="1003.8" y="244.0" class="value">21.6 ± 0.032 us/op (-0.4%)</text>
+<rect x="400.0" y="254.0" width="585.3" height="18" rx="2" fill="#ea580c"/>
+<text x="991.3" y="267.0" class="value">★ 21.2 ± 0.062 us/op (-2.4%)</text>
+<text x="388.0" y="334.0" text-anchor="end" class="label">decompress · data=text, inputSize=131072 bytes</text>
+<rect x="400.0" y="298.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1006.0" y="311.0" class="value">191 ± 0.507 us/op (±0%)</text>
+<rect x="400.0" y="321.0" width="598.9" height="18" rx="2" fill="#2563eb"/>
+<text x="1004.9" y="334.0" class="value">★ 191 ± 0.323 us/op (-0.2%)</text>
+<rect x="400.0" y="344.0" width="599.0" height="18" rx="2" fill="#ea580c"/>
+<text x="1005.0" y="357.0" class="value">191 ± 0.590 us/op (-0.2%)</text>
+<text x="388.0" y="424.0" text-anchor="end" class="label">decompress · data=random, inputSize=256 bytes</text>
+<rect x="400.0" y="388.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="1006.0" y="401.0" class="value">1.052 ± 0.033 us/op (±0%)</text>
+<rect x="400.0" y="411.0" width="585.7" height="18" rx="2" fill="#2563eb"/>
+<text x="991.7" y="424.0" class="value">1.027 ± 0.007 us/op (-2.4%)</text>
+<rect x="400.0" y="434.0" width="337.6" height="18" rx="2" fill="#ea580c"/>
+<text x="743.6" y="447.0" class="value">★ 0.592 ± 0.009 us/op (-43.7%)</text>
+<text x="388.0" y="514.0" text-anchor="end" class="label">decompress · data=random, inputSize=16384 bytes</text>
+<rect x="400.0" y="478.0" width="597.7" height="18" rx="2" fill="#6b7280"/>
+<text x="1003.7" y="491.0" class="value">3.135 ± 0.025 us/op (±0%)</text>
+<rect x="400.0" y="501.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1006.0" y="514.0" class="value">3.147 ± 0.024 us/op (+0.4%)</text>
+<rect x="400.0" y="524.0" width="502.2" height="18" rx="2" fill="#ea580c"/>
+<text x="908.2" y="537.0" class="value">★ 2.634 ± 0.081 us/op (-16.0%)</text>
+<text x="388.0" y="604.0" text-anchor="end" class="label">decompress · data=random, inputSize=131072 bytes</text>
+<rect x="400.0" y="568.0" width="598.9" height="18" rx="2" fill="#6b7280"/>
+<text x="1004.9" y="581.0" class="value">19.5 ± 0.355 us/op (±0%)</text>
+<rect x="400.0" y="591.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="1006.0" y="604.0" class="value">19.5 ± 0.166 us/op (+0.2%)</text>
+<rect x="400.0" y="614.0" width="584.6" height="18" rx="2" fill="#ea580c"/>
+<text x="990.6" y="627.0" class="value">★ 19.0 ± 0.224 us/op (-2.4%)</text>
+</svg>

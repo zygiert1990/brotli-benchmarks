@@ -1,0 +1,6 @@
+Benchmark                                                                      Mode  Cnt     Score    Error   Units
+DecoderDictionaryBenchmark.decompressMessageWithDictionary                     avgt   15     4.185 ±  0.035   us/op
+DecoderDictionaryBenchmark.decompressMessageWithDictionary:gc.alloc.rate       avgt   15  2029.066 ± 17.031  MB/sec
+DecoderDictionaryBenchmark.decompressMessageWithDictionary:gc.alloc.rate.norm  avgt   15  8904.006 ±  0.001    B/op
+DecoderDictionaryBenchmark.decompressMessageWithDictionary:gc.count            avgt   15   126.000           counts
+DecoderDictionaryBenchmark.decompressMessageWithDictionary:gc.time             avgt   15   170.000               ms

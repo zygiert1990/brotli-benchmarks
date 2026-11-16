@@ -1,0 +1,31 @@
+Benchmark                                              (data)  (inputSize)  Mode  Cnt       Score     Error   Units
+DecoderOneShotBenchmark.decompress                       text          256  avgt   15       3.035 ±   0.015   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate         text          256  avgt   15     163.384 ±   0.818  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm    text          256  avgt   15     520.004 ±   0.001    B/op
+DecoderOneShotBenchmark.decompress:gc.count              text          256  avgt   15       9.000            counts
+DecoderOneShotBenchmark.decompress:gc.time               text          256  avgt   15      19.000                ms
+DecoderOneShotBenchmark.decompress                       text        16384  avgt   15      21.719 ±   0.042   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate         text        16384  avgt   15     730.971 ±   1.414  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm    text        16384  avgt   15   16648.031 ±   0.001    B/op
+DecoderOneShotBenchmark.decompress:gc.count              text        16384  avgt   15      45.000            counts
+DecoderOneShotBenchmark.decompress:gc.time               text        16384  avgt   15      78.000                ms
+DecoderOneShotBenchmark.decompress                       text       131072  avgt   15     191.117 ±   0.507   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate         text       131072  avgt   15     655.341 ±   1.732  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm    text       131072  avgt   15  131336.270 ±   0.002    B/op
+DecoderOneShotBenchmark.decompress:gc.count              text       131072  avgt   15      45.000            counts
+DecoderOneShotBenchmark.decompress:gc.time               text       131072  avgt   15      78.000                ms
+DecoderOneShotBenchmark.decompress                     random          256  avgt   15       1.052 ±   0.033   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate       random          256  avgt   15     471.745 ±  14.519  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm  random          256  avgt   15     520.001 ±   0.001    B/op
+DecoderOneShotBenchmark.decompress:gc.count            random          256  avgt   15      29.000            counts
+DecoderOneShotBenchmark.decompress:gc.time             random          256  avgt   15      58.000                ms
+DecoderOneShotBenchmark.decompress                     random        16384  avgt   15       3.135 ±   0.025   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate       random        16384  avgt   15    5064.992 ±  39.754  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm  random        16384  avgt   15   16648.004 ±   0.001    B/op
+DecoderOneShotBenchmark.decompress:gc.count            random        16384  avgt   15     315.000            counts
+DecoderOneShotBenchmark.decompress:gc.time             random        16384  avgt   15     428.000                ms
+DecoderOneShotBenchmark.decompress                     random       131072  avgt   15      19.464 ±   0.355   us/op
+DecoderOneShotBenchmark.decompress:gc.alloc.rate       random       131072  avgt   15    6436.447 ± 117.522  MB/sec
+DecoderOneShotBenchmark.decompress:gc.alloc.rate.norm  random       131072  avgt   15  131336.027 ±   0.001    B/op
+DecoderOneShotBenchmark.decompress:gc.count            random       131072  avgt   15     450.000            counts
+DecoderOneShotBenchmark.decompress:gc.time             random       131072  avgt   15     626.000                ms

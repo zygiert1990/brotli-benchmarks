@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1188" height="630" viewBox="0 0 1188 630">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:system-ui,-apple-system,sans-serif;fill:#1f2937}.title{font-size:22px;font-weight:700}.label{font-size:13px}.tick{font-size:12px;fill:#4b5563}.value{font-size:12px;font-weight:600}</style>
+<text x="355.0" y="32" class="title">Execution time (bar length relative to row worst)</text>
+<rect x="355.0" y="50" width="15" height="15" rx="2" fill="#6b7280"/>
+<text x="377.0" y="63" class="label">main</text>
+<rect x="475.0" y="50" width="15" height="15" rx="2" fill="#2563eb"/>
+<text x="497.0" y="63" class="label">jni</text>
+<rect x="595.0" y="50" width="15" height="15" rx="2" fill="#ea580c"/>
+<text x="617.0" y="63" class="label">ffm</text>
+<line x1="355.0" y1="93" x2="355.0" y2="582" stroke="#e5e7eb"/>
+<text x="355.0" y="605" text-anchor="middle" class="tick">0%</text>
+<line x1="505.0" y1="93" x2="505.0" y2="582" stroke="#e5e7eb"/>
+<text x="505.0" y="605" text-anchor="middle" class="tick">25%</text>
+<line x1="655.0" y1="93" x2="655.0" y2="582" stroke="#e5e7eb"/>
+<text x="655.0" y="605" text-anchor="middle" class="tick">50%</text>
+<line x1="805.0" y1="93" x2="805.0" y2="582" stroke="#e5e7eb"/>
+<text x="805.0" y="605" text-anchor="middle" class="tick">75%</text>
+<line x1="955.0" y1="93" x2="955.0" y2="582" stroke="#e5e7eb"/>
+<text x="955.0" y="605" text-anchor="middle" class="tick">100%</text>
+<line x1="355.0" y1="93" x2="355.0" y2="582" stroke="#6b7280" stroke-width="1.5"/>
+<text x="343.0" y="154.0" text-anchor="end" class="label">decompressDataset · bufferSize=64 bytes</text>
+<rect x="355.0" y="118.0" width="592.3" height="18" rx="2" fill="#6b7280"/>
+<text x="953.3" y="131.0" class="value">477 ± 1.745 us/op (±0%)</text>
+<rect x="355.0" y="141.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="961.0" y="154.0" class="value">483 ± 1.603 us/op (+1.3%)</text>
+<rect x="355.0" y="164.0" width="560.4" height="18" rx="2" fill="#ea580c"/>
+<text x="921.4" y="177.0" class="value">★ 451 ± 2.848 us/op (-5.4%)</text>
+<text x="343.0" y="244.0" text-anchor="end" class="label">decompressDataset · bufferSize=512 bytes</text>
+<rect x="355.0" y="208.0" width="599.0" height="18" rx="2" fill="#6b7280"/>
+<text x="960.0" y="221.0" class="value">328 ± 1.515 us/op (±0%)</text>
+<rect x="355.0" y="231.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="961.0" y="244.0" class="value">328 ± 0.503 us/op (+0.2%)</text>
+<rect x="355.0" y="254.0" width="591.3" height="18" rx="2" fill="#ea580c"/>
+<text x="952.3" y="267.0" class="value">★ 324 ± 2.018 us/op (-1.3%)</text>
+<text x="343.0" y="334.0" text-anchor="end" class="label">decompressDataset · bufferSize=4096 bytes</text>
+<rect x="355.0" y="298.0" width="600.0" height="18" rx="2" fill="#6b7280"/>
+<text x="961.0" y="311.0" class="value">308 ± 1.328 us/op (±0%)</text>
+<rect x="355.0" y="321.0" width="598.7" height="18" rx="2" fill="#2563eb"/>
+<text x="959.7" y="334.0" class="value">307 ± 0.697 us/op (-0.2%)</text>
+<rect x="355.0" y="344.0" width="597.3" height="18" rx="2" fill="#ea580c"/>
+<text x="958.3" y="357.0" class="value">★ 306 ± 1.395 us/op (-0.5%)</text>
+<text x="343.0" y="424.0" text-anchor="end" class="label">decompressDataset · bufferSize=16384 bytes</text>
+<rect x="355.0" y="388.0" width="595.9" height="18" rx="2" fill="#6b7280"/>
+<text x="956.9" y="401.0" class="value">★ 304 ± 0.704 us/op (±0%)</text>
+<rect x="355.0" y="411.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="961.0" y="424.0" class="value">306 ± 0.656 us/op (+0.7%)</text>
+<rect x="355.0" y="434.0" width="596.4" height="18" rx="2" fill="#ea580c"/>
+<text x="957.4" y="447.0" class="value">304 ± 1.812 us/op (+0.1%)</text>
+<text x="343.0" y="514.0" text-anchor="end" class="label">decompressDataset · bufferSize=65536 bytes</text>
+<rect x="355.0" y="478.0" width="597.2" height="18" rx="2" fill="#6b7280"/>
+<text x="958.2" y="491.0" class="value">★ 303 ± 1.065 us/op (±0%)</text>
+<rect x="355.0" y="501.0" width="600.0" height="18" rx="2" fill="#2563eb"/>
+<text x="961.0" y="514.0" class="value">304 ± 1.036 us/op (+0.5%)</text>
+<rect x="355.0" y="524.0" width="597.4" height="18" rx="2" fill="#ea580c"/>
+<text x="958.4" y="537.0" class="value">303 ± 1.296 us/op (±0%)</text>
+</svg>

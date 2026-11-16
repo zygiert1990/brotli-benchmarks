@@ -1,0 +1,10 @@
+Benchmark                                                                    Mode  Cnt    Score    Error   Units
+EncoderDictionaryBenchmark.compressMessageWithDictionary                     avgt   15   28.346 ±  0.081   us/op
+EncoderDictionaryBenchmark.compressMessageWithDictionary:gc.alloc.rate       avgt   15   23.417 ±  0.067  MB/sec
+EncoderDictionaryBenchmark.compressMessageWithDictionary:gc.alloc.rate.norm  avgt   15  696.040 ±  0.001    B/op
+EncoderDictionaryBenchmark.compressMessageWithDictionary:gc.count            avgt   15    3.000           counts
+EncoderDictionaryBenchmark.compressMessageWithDictionary:gc.time             avgt   15    5.000               ms
+EncoderDictionaryBenchmark.prepareAndCloseDictionary                         avgt   15  409.554 ±  5.366   us/op
+EncoderDictionaryBenchmark.prepareAndCloseDictionary:gc.alloc.rate           avgt   15    0.170 ±  0.027  MB/sec
+EncoderDictionaryBenchmark.prepareAndCloseDictionary:gc.alloc.rate.norm      avgt   15   73.118 ± 11.739    B/op
+EncoderDictionaryBenchmark.prepareAndCloseDictionary:gc.count                avgt   15      ≈ 0           counts

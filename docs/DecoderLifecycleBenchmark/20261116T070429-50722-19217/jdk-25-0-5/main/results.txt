@@ -1,0 +1,21 @@
+Benchmark                                                                          Mode  Cnt     Score    Error   Units
+DecoderLifecycleBenchmark.createAndCloseStream                                     avgt   15     0.546 ±  0.008   us/op
+DecoderLifecycleBenchmark.createAndCloseStream:gc.alloc.rate                       avgt   15   558.541 ±  7.859  MB/sec
+DecoderLifecycleBenchmark.createAndCloseStream:gc.alloc.rate.norm                  avgt   15   320.001 ±  0.001    B/op
+DecoderLifecycleBenchmark.createAndCloseStream:gc.count                            avgt   15    33.000           counts
+DecoderLifecycleBenchmark.createAndCloseStream:gc.time                             avgt   15    62.000               ms
+DecoderLifecycleBenchmark.createAndCloseStreamOnFourThreads                        avgt   15     0.524 ±  0.008   us/op
+DecoderLifecycleBenchmark.createAndCloseStreamOnFourThreads:gc.alloc.rate          avgt   15  2330.279 ± 36.581  MB/sec
+DecoderLifecycleBenchmark.createAndCloseStreamOnFourThreads:gc.alloc.rate.norm     avgt   15   319.989 ±  0.011    B/op
+DecoderLifecycleBenchmark.createAndCloseStreamOnFourThreads:gc.count               avgt   15   143.000           counts
+DecoderLifecycleBenchmark.createAndCloseStreamOnFourThreads:gc.time                avgt   15   134.000               ms
+DecoderLifecycleBenchmark.createAndDestroyWrapper                                  avgt   15     0.489 ±  0.002   us/op
+DecoderLifecycleBenchmark.createAndDestroyWrapper:gc.alloc.rate                    avgt   15   202.969 ±  1.029  MB/sec
+DecoderLifecycleBenchmark.createAndDestroyWrapper:gc.alloc.rate.norm               avgt   15   104.001 ±  0.001    B/op
+DecoderLifecycleBenchmark.createAndDestroyWrapper:gc.count                         avgt   15    12.000           counts
+DecoderLifecycleBenchmark.createAndDestroyWrapper:gc.time                          avgt   15    24.000               ms
+DecoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads                     avgt   15     0.489 ±  0.003   us/op
+DecoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.alloc.rate       avgt   15   812.024 ±  4.559  MB/sec
+DecoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.alloc.rate.norm  avgt   15   104.000 ±  0.001    B/op
+DecoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.count            avgt   15    48.000           counts
+DecoderLifecycleBenchmark.createAndDestroyWrapperOnFourThreads:gc.time             avgt   15    65.000               ms
